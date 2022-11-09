@@ -9,9 +9,7 @@ async function getLatestBlockNumber(network: 'mainnet' | 'goerli') {
 
     const provider = new ethers.providers.JsonRpcProvider(infuraUrl);
 
-    const blockNumber = await provider.getBlockNumber();
-
-    return blockNumber;
+    await provider.getBlockNumber();
   } catch (error) {
     throw new Error(`${error}`);
   }

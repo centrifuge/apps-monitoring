@@ -40,7 +40,7 @@ jobs:
           name: 'infura-mainnet'
           runtime: 'nodejs16'
           entry_point: 'dist/infura/mainnet.js'
-          env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
+          env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-infura-goerli'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
@@ -48,7 +48,7 @@ jobs:
           name: 'infura-goerli'
           runtime: 'nodejs16'
           entry_point: 'dist/infura/goerli.js'
-          env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
+          env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-subgraph-mainnet'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
@@ -56,4 +56,4 @@ jobs:
           name: 'subgraph-mainnet'
           runtime: 'nodejs16'
           entry_point: 'dist/subgraph/mainnet.js'
-          env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
+          env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'

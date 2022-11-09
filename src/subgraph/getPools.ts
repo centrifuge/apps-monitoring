@@ -3,7 +3,7 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-async function getPools(network: string) {
+async function getPools(network: 'mainnet' | 'goerli') {
   try {
     const result = await axios({
       url: process.env[`SUBGRAPH_${network.toUpperCase()}_URL`],

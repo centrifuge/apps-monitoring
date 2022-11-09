@@ -1,15 +1,8 @@
-import * as Sentry from '@sentry/node';
-import * as dotenv from 'dotenv';
+import { sendSlackMessage } from '../sendSlackMessage';
 import { getPools } from './getPools';
-
-dotenv.config();
-
-Sentry.init({
-  dsn: process.env.SENTRY_DSN,
-});
 
 try {
   await getPools('mainnet');
-} catch (error) {
-  Sentry.captureException(`Error pinging Subgraph pools: ${error}`);
+} catch {
+  sendSlackMessage('Something went wrong with the subgraph!');
 }
