@@ -14,10 +14,6 @@ jobs:
       contents: 'read'
       id-token: 'write'
 
-    defaults:
-      run:
-        working-directory: src
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -40,6 +36,7 @@ jobs:
           name: 'infura-mainnet'
           runtime: 'nodejs16'
           entry_point: 'dist/infura/mainnet.js'
+          source_dir: 'dist'
           env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-infura-goerli'
@@ -48,6 +45,7 @@ jobs:
           name: 'infura-goerli'
           runtime: 'nodejs16'
           entry_point: 'dist/infura/goerli.js'
+          source_dir: 'dist'
           env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-subgraph-mainnet'
@@ -56,4 +54,5 @@ jobs:
           name: 'subgraph-mainnet'
           runtime: 'nodejs16'
           entry_point: 'dist/subgraph/mainnet.js'
+          source_dir: 'dist'
           env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
