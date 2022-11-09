@@ -39,7 +39,7 @@ jobs:
           name: 'infura-mainnet'
           runtime: 'nodejs16'
           entry_point: './dist/infuraMainnet.js'
-          env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
+          env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-infura-goerli'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
@@ -47,7 +47,7 @@ jobs:
           name: 'infura-goerli'
           runtime: 'nodejs16'
           entry_point: './dist/infuraGoerli.js'
-          env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
+          env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-subgraph-mainnet'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
@@ -55,4 +55,4 @@ jobs:
           name: 'subgraph-mainnet'
           runtime: 'nodejs16'
           entry_point: './dist/subgraphMainnet.js'
-          env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
+          env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
