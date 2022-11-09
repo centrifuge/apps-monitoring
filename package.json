@@ -1,19 +1,37 @@
 {
   "name": "apps-monitoring",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc --build",
+    "infura-mainnet": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/infura/mainnet'",
+    "infura-goerli": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/infura/goerli'",
+    "subgraph-mainnet": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/subgraph/mainnet'",
+    "lint": "eslint 'src/**'",
+    "prepare": "husky install",
+    "start": "node --es-module-specifier-resolution=node ./dist/index"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/centrifuge/apps-monitoring.git"
+  "dependencies": {
+    "@sentry/node": "^7.18.0",
+    "@sentry/tracing": "^7.18.0",
+    "axios": "^1.1.3",
+    "dotenv": "^8.2.0",
+    "ethers": "^5.7.2"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/centrifuge/apps-monitoring/issues"
-  },
-  "homepage": "https://github.com/centrifuge/apps-monitoring#readme"
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
+    "@typescript-eslint/parser": "^4.31.2",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.4.1",
+    "ts-node": "^10.2.1",
+    "tsc-watch": "^4.5.0",
+    "typescript": "^4.4.3"
+  }
 }
