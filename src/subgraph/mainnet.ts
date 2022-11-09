@@ -11,5 +11,5 @@ Sentry.init({
 try {
   await getPools('mainnet');
 } catch (error) {
-  Sentry.captureException(`Error pinging Infura Mainnet: ${error}`);
+  Sentry.captureException(`Error pinging Subgraph pools: ${error}`);
 }
