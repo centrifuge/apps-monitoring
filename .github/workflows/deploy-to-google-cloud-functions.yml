@@ -1,0 +1,53 @@
+name: 'deploy-to-google-cloud-functions'
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - '.github/workflows/deploy-to-google-cloud-functions.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: src
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Compile Typescript
+        run: yarn build
+
+      - id: 'auth'
+        uses: 'google-github-actions/auth@v0'
+        with:
+          workload_identity_provider: ${{ secrets.GOOGLE_CLOUD_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GOOGLE_CLOUD_SERVICE_ACCOUNT }}
+
+      - id: 'deploy-infura-mainnet'
+        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        with:
+          name: 'infura-mainnet'
+          runtime: 'nodejs16'
+          entry_point: 'dist/infura/mainnet.js'
+          env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
+
+      - id: 'deploy-infura-goerli'
+        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        with:
+          name: 'infura-goerli'
+          runtime: 'nodejs16'
+          entry_point: 'dist/infura/goerli.js'
+          env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
+
+      - id: 'deploy-subgraph-mainnet'
+        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        with:
+          name: 'subgraph-mainnet'
+          runtime: 'nodejs16'
+          entry_point: 'dist/subgraph/mainnet.js'
+          env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SENTRY_DSN=${{ secrets.SENTRY_DSN }}'
