@@ -21,6 +21,9 @@ jobs:
       - name: Install Dependencies
         run: yarn install
 
+      - name: Lint
+        run: yarn lint
+
       - name: Compile Typescript
         run: yarn build
 
@@ -35,8 +38,7 @@ jobs:
         with:
           name: 'infura-mainnet'
           runtime: 'nodejs16'
-          entry_point: 'dist/infura/mainnet.js'
-          source_dir: 'dist'
+          entry_point: './dist/infuraMainnet.js'
           env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-infura-goerli'
@@ -44,8 +46,7 @@ jobs:
         with:
           name: 'infura-goerli'
           runtime: 'nodejs16'
-          entry_point: 'dist/infura/goerli.js'
-          source_dir: 'dist'
+          entry_point: './dist/infuraGoerli.js'
           env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'
 
       - id: 'deploy-subgraph-mainnet'
@@ -53,6 +54,5 @@ jobs:
         with:
           name: 'subgraph-mainnet'
           runtime: 'nodejs16'
-          entry_point: 'dist/subgraph/mainnet.js'
-          source_dir: 'dist'
+          entry_point: './dist/subgraphMainnet.js'
           env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }}'

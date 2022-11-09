@@ -2,34 +2,36 @@
   "name": "apps-monitoring",
   "version": "1.0.0",
   "type": "module",
+  "license": "MIT",
   "scripts": {
-    "build": "tsc --build",
-    "infura-mainnet": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/infura/mainnet'",
-    "infura-goerli": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/infura/goerli'",
-    "subgraph-mainnet": "tsc-watch --noClear -p ./tsconfig.json --onSuccess 'node --es-module-specifier-resolution=node ./dist/subgraph/mainnet'",
+    "build": "yarn build:infura-mainnet && yarn build:infura-goerli && yarn build:subgraph-mainnet",
+    "build:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet.js --minify",
+    "build:infura-goerli": "esbuild src/infura/goerli.ts --bundle --platform=node --outfile=dist/infuraGoerli.js --minify",
+    "build:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet.js --minify",
+    "start:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet.js --watch",
+    "start:infura-goerli": "esbuild src/goerli/mainnet.ts --bundle --platform=node --outfile=dist/infuraGoerli.js --watch",
+    "start:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet.js --watch",
     "lint": "eslint 'src/**'",
-    "prepare": "husky install",
-    "start": "node --es-module-specifier-resolution=node ./dist/index"
+    "prepare": "husky install"
   },
   "dependencies": {
     "axios": "^1.1.3",
     "dotenv": "^8.2.0",
+    "esbuild": "^0.15.13",
     "ethers": "^5.7.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",
-    "@typescript-eslint/eslint-plugin": "^4.31.2",
-    "@typescript-eslint/parser": "^4.31.2",
-    "eslint": "^7.32.0",
-    "eslint-config-airbnb-base": "^14.2.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-import": "^2.24.2",
-    "eslint-plugin-prettier": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
     "husky": "^8.0.2",
     "lint-staged": ">=10",
-    "prettier": "^2.4.1",
-    "ts-node": "^10.2.1",
-    "tsc-watch": "^4.5.0",
+    "prettier": "^2.7.1",
     "typescript": "^4.4.3"
   }
 }
