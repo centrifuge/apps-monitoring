@@ -19,6 +19,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install Dependencies
+        run: yarn install
+
       - name: Compile Typescript
         run: yarn build
 
