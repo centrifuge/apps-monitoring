@@ -6,7 +6,7 @@ async function pingSubgraphMainnet() {
   try {
     await getPools('mainnet');
   } catch {
-    sendSlackMessage('Something went wrong with the subgraph!');
+    sendSlackMessage('<!channel> Something went wrong with the subgraph!');
     sendTelegramMessage('Something went wrong with the subgraph!');
   }
 }

@@ -6,7 +6,9 @@ async function pingInfuraGoerli() {
   try {
     await getLatestBlockNumber('goerli');
   } catch {
-    sendSlackMessage('Something went wrong with the Infura Goerli endpoint!');
+    sendSlackMessage(
+      '<!channel> Something went wrong with the Infura Goerli endpoint!',
+    );
     sendTelegramMessage(
       'Something went wrong with the Infura Goerli endpoint!',
     );

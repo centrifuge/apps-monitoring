@@ -6,7 +6,9 @@ async function pingInfuraMainnet() {
   try {
     await getLatestBlockNumber('mainnet');
   } catch {
-    sendSlackMessage('Something went wrong with the Infura Mainnet endpoint!');
+    sendSlackMessage(
+      '<!channel> Something went wrong with the Infura Mainnet endpoint!',
+    );
     sendTelegramMessage(
       'Something went wrong with the Infura Mainnet endpoint!',
     );
