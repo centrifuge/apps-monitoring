@@ -3,23 +3,25 @@ import * as dotenv from 'dotenv';
 
 dotenv.config();
 
-async function getPools(network: 'mainnet' | 'goerli') {
+async function getPools() {
   try {
     const { data } = await axios({
-      url: process.env[`SUBGRAPH_${network.toUpperCase()}_URL`],
+      url: process.env.SUBQUERY_URL,
       method: 'post',
       data: {
         query: `
           query {
-            pools(first: 100) {
-              shortName
+            pools {
+              nodes {
+                id
+              }
             }
           }
         `,
       },
     });
 
-    if (!data?.data?.pools?.length) {
+    if (!data?.data?.pools?.nodes?.length) {
       throw new Error('No pools found');
     }
   } catch (error) {

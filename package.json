@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "yarn build:infura-mainnet && yarn build:infura-goerli && yarn build:subgraph-mainnet",
+    "build": "yarn build:infura-mainnet && yarn build:infura-goerli && yarn build:subgraph-mainnet && yarn build:subquery",
     "build:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet.js --minify",
     "build:infura-goerli": "esbuild src/infura/goerli.ts --bundle --platform=node --outfile=dist/infuraGoerli.js --minify",
     "build:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet.js --minify",
-    "start:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet.js --watch",
-    "start:infura-goerli": "esbuild src/goerli/mainnet.ts --bundle --platform=node --outfile=dist/infuraGoerli.js --watch",
-    "start:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet.js",
-    "dev:infura-mainnet": "yarn start:infura-mainnet && nodemon dist/infuraMainnet.js",
-    "dev:infura-goerli": "yarn start:infura-goerli && nodemon dist/infuraGoerli.js",
-    "dev:subgraph-mainnet": "yarn start:subgraph-mainnet && nodemon dist/subgraphMainnet.js",
+    "build:subquery": "esbuild src/subquery/index.ts --bundle --platform=node --outfile=dist/subquery.js --minify",
+    "dev:infura-mainnet": "yarn build:infura-mainnet && node dist/infuraMainnet.js",
+    "dev:infura-goerli": "yarn build:infura-goerli && node dist/infuraGoerli.js",
+    "dev:subgraph-mainnet": "yarn build:subgraph-mainnet && node dist/subgraphMainnet.js",
+    "dev:subquery": "yarn build:subquery && node dist/subquery.js",
     "lint": "eslint 'src/**'",
     "prepare": "husky install"
   },
@@ -20,8 +19,7 @@
     "axios": "^1.1.3",
     "dotenv": "^8.2.0",
     "esbuild": "^0.15.13",
-    "ethers": "^5.7.2",
-    "nodemon": "^2.0.20"
+    "ethers": "^5.7.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.9",

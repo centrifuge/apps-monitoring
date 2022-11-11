@@ -56,3 +56,11 @@ jobs:
           runtime: 'nodejs16'
           entry_point: './dist/subgraphMainnet.js'
           env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
+
+      - id: 'deploy-subquery'
+        uses: 'google-github-actions/deploy-cloud-functions@v0'
+        with:
+          name: 'pingSubquery'
+          runtime: 'nodejs16'
+          entry_point: './dist/subquery.js'
+          env_vars: 'SUBQUERY_URL=${{ secrets.SUBQUERY_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
