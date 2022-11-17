@@ -4,10 +4,10 @@
   "license": "MIT",
   "scripts": {
     "build": "yarn build:infura-mainnet && yarn build:infura-goerli && yarn build:subgraph-mainnet && yarn build:subquery",
-    "build:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet.js --minify",
-    "build:infura-goerli": "esbuild src/infura/goerli.ts --bundle --platform=node --outfile=dist/infuraGoerli.js --minify",
-    "build:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet.js --minify",
-    "build:subquery": "esbuild src/subquery/index.ts --bundle --platform=node --outfile=dist/subquery.js --minify",
+    "build:infura-mainnet": "esbuild src/infura/mainnet.ts --bundle --platform=node --outfile=dist/infuraMainnet/index.js --minify",
+    "build:infura-goerli": "esbuild src/infura/goerli.ts --bundle --platform=node --outfile=dist/infuraGoerli/index.js --minify",
+    "build:subgraph-mainnet": "esbuild src/subgraph/mainnet.ts --bundle --platform=node --outfile=dist/subgraphMainnet/index.js --minify",
+    "build:subquery": "esbuild src/subquery/index.ts --bundle --platform=node --outfile=dist/subquery/index.js --minify",
     "dev:infura-mainnet": "yarn build:infura-mainnet && node dist/infuraMainnet.js",
     "dev:infura-goerli": "yarn build:infura-goerli && node dist/infuraGoerli.js",
     "dev:subgraph-mainnet": "yarn build:subgraph-mainnet && node dist/subgraphMainnet.js",
@@ -16,6 +16,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@google-cloud/functions-framework": "^3.1.2",
     "axios": "^1.1.3",
     "dotenv": "^8.2.0",
     "esbuild": "^0.15.13",

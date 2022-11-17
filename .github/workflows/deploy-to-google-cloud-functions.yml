@@ -38,7 +38,8 @@ jobs:
         with:
           name: 'pingInfuraMainnet'
           runtime: 'nodejs16'
-          entry_point: './dist/infuraMainnet.js'
+          entry_point: 'pingInfuraMainnet'
+          source_dir: 'dist/infuraMainnet'
           env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-infura-goerli'
@@ -46,7 +47,8 @@ jobs:
         with:
           name: 'pingInfuraGoerli'
           runtime: 'nodejs16'
-          entry_point: './dist/infuraGoerli.js'
+          entry_point: 'pingInfuraGoerli'
+          source_dir: 'dist/infuraGoerli'
           env_vars: 'INFURA_GOERLI_URL=${{ secrets.INFURA_GOERLI_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-subgraph-mainnet'
@@ -54,7 +56,8 @@ jobs:
         with:
           name: 'pingSubgraphMainnet'
           runtime: 'nodejs16'
-          entry_point: './dist/subgraphMainnet.js'
+          entry_point: 'pingSubgraphMainnet'
+          source_dir: 'dist/subgraphMainnet'
           env_vars: 'SUBGRAPH_MAINNET_URL=${{ secrets.SUBGRAPH_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-subquery'
@@ -62,5 +65,6 @@ jobs:
         with:
           name: 'pingSubquery'
           runtime: 'nodejs16'
-          entry_point: './dist/subquery.js'
+          entry_point: 'pingSubquery'
+          source_dir: 'dist/subquery'
           env_vars: 'SUBQUERY_URL=${{ secrets.SUBQUERY_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
