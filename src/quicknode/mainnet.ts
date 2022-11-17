@@ -3,18 +3,18 @@ import { sendSlackMessage } from '../sendSlackMessage';
 import { sendTelegramMessage } from '../sendTelegramMessage';
 import { getLatestBlockNumber } from '../getLatestBlockNumber';
 
-async function pingInfuraGoerli(request: Request, response: Response) {
+async function pingQuicknodeMainnet(request: Request, response: Response) {
   try {
-    await getLatestBlockNumber('infura', 'goerli');
+    await getLatestBlockNumber('quicknode', 'mainnet');
     response.send('OK');
-  } catch {
+  } catch (error) {
     sendSlackMessage(
-      '<!channel> Something went wrong with the Infura Goerli endpoint!',
+      '<!channel> Something went wrong with the Quicknode Mainnet endpoint!',
     );
     sendTelegramMessage(
-      'Something went wrong with the Infura Goerli endpoint!',
+      'Something went wrong with the Quicknode Mainnet endpoint!',
     );
   }
 }
 
-export { pingInfuraGoerli };
+export { pingQuicknodeMainnet };
