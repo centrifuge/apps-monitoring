@@ -4,7 +4,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 async function getLatestBlockNumber(
-  service: 'infura' | 'quicknode',
+  service: 'infura',
   network: 'mainnet' | 'goerli',
 ) {
   try {

@@ -42,14 +42,14 @@ jobs:
           source_dir: 'dist/infuraMainnet'
           env_vars: 'INFURA_MAINNET_URL=${{ secrets.INFURA_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
-      - id: 'deploy-quicknode-mainnet'
+      - id: 'deploy-goldsky-mainnet'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
         with:
-          name: 'pingQuicknodeMainnet'
+          name: 'pingGoldskyMainnet'
           runtime: 'nodejs16'
-          entry_point: 'pingQuicknodeMainnet'
-          source_dir: 'dist/quicknodeMainnet'
-          env_vars: 'QUICKNODE_MAINNET_URL=${{ secrets.QUICKNODE_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
+          entry_point: 'pingGoldskyMainnet'
+          source_dir: 'dist/goldskyMainnet'
+          env_vars: 'GOLDSKY_MAINNET_URL=${{ secrets.GOLDSKY_MAINNET_URL }},SLACK_API_TOKEN=${{ secrets.SLACK_API_TOKEN }},SLACK_APPS_ALERTING_CHANNEL=${{ secrets.SLACK_APPS_ALERTING_CHANNEL }},TELEGRAM_BOT_TOKEN=${{ secrets.TELEGRAM_BOT_TOKEN }},TELEGRAM_CHAT_ID=${{ secrets.TELEGRAM_CHAT_ID }}'
 
       - id: 'deploy-infura-goerli'
         uses: 'google-github-actions/deploy-cloud-functions@v0'
